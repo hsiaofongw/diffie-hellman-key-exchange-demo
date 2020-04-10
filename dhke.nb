@@ -1,0 +1,361 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12481,        353]
+NotebookOptionsPosition[      9692,        297]
+NotebookOutlinePosition[     10094,        314]
+CellTagsIndexPosition[     10051,        311]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Diffie-Hellman Key Exchange Demonstration", "Title",
+ CellChangeTimes->{{3.7951531865436573`*^9, 
+  3.795153230984976*^9}},ExpressionUUID->"f918704e-7886-40ab-adf9-\
+8c5cbe9c8663"],
+
+Cell[TextData[{
+ "First Alice and Bob publicly agree to use ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{"p", ",", "g"}], ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "c941533b-c0d1-44b1-b11d-4513bb0a2fc9"],
+ ", where g is a primitive root of ",
+ Cell[BoxData[
+  FormBox["p", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "52c82237-495a-400b-8d7a-ece491adce88"],
+ ", and ",
+ Cell[BoxData[
+  FormBox["p", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "e7e4f5cc-1af6-4ffa-8be4-783a3b01753d"],
+ " should be some integer power of a odd prime number"
+}], "Text",
+ CellChangeTimes->{{3.795153252698452*^9, 3.795153322312819*^9}, {
+  3.795153596821766*^9, 
+  3.795153651858562*^9}},ExpressionUUID->"0b794eb9-cc85-416d-a251-\
+2b8fca5dcd77"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"p", "=", 
+  RowBox[{"Prime", "[", "10", "]"}]}]], "Input",
+ CellChangeTimes->{{3.795152412689479*^9, 3.795152418765422*^9}, {
+  3.795152449427484*^9, 3.7951524497532377`*^9}},
+ CellLabel->"In[76]:=",ExpressionUUID->"9cdb8e03-a4a9-4207-bb69-22d28cbf9d9c"],
+
+Cell[BoxData["29"], "Output",
+ CellChangeTimes->{
+  3.795152419052413*^9, 3.795152450271673*^9, {3.795152986224613*^9, 
+   3.7951530082745953`*^9}},
+ CellLabel->"Out[76]=",ExpressionUUID->"1abc7d7a-a6cb-4565-8e88-8e9e4caa2eaa"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"g", "=", 
+  RowBox[{
+   RowBox[{"PrimitiveRootList", "[", "p", "]"}], "[", 
+   RowBox[{"[", "1", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.795152459716798*^9, 3.7951525155917273`*^9}},
+ CellLabel->"In[77]:=",ExpressionUUID->"532623b2-ac7d-4a80-92f1-84bd3cf8cb3f"],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{{3.795152486410469*^9, 3.795152515945552*^9}, {
+  3.795152986361741*^9, 3.795153008384335*^9}},
+ CellLabel->"Out[77]=",ExpressionUUID->"abdf6914-391c-4af7-a28a-6bdc6f56e75e"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Then Alice choose a random number, say ",
+ Cell[BoxData[
+  FormBox["a", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "74ced10b-4d03-4549-9b2b-e86aa07cfc81"],
+ ", she computes ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"A", "=", 
+    RowBox[{
+     SuperscriptBox["g", "a"], "mod", " ", "p"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "e8e31cc9-592a-49c2-af41-fe8aecf9bcab"],
+ ", and sends ",
+ Cell[BoxData[
+  FormBox["A", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "5e9a454c-7f23-47f5-9b4a-6b06af64ffeb"],
+ " to Bob"
+}], "Text",
+ CellChangeTimes->{{3.7951533302068043`*^9, 3.795153482962512*^9}, {
+  3.7951535532955437`*^9, 
+  3.795153564485661*^9}},ExpressionUUID->"e3c8c3ac-56f0-4c5d-860b-\
+566d516c6792"],
+
+Cell[BoxData[
+ RowBox[{"SeedRandom", "[", "2020", "]"}]], "Input",
+ CellChangeTimes->{{3.795152635079999*^9, 3.7951526397048492`*^9}},
+ CellLabel->"In[78]:=",ExpressionUUID->"02d3e981-0ea8-4af1-87c6-067b768e7d07"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"a", "=", 
+  RowBox[{"RandomInteger", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Prime", "[", "10", "]"}], ",", 
+     RowBox[{"Prime", "[", "100", "]"}]}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.795152642907084*^9, 3.795152696817853*^9}},
+ CellLabel->"In[79]:=",ExpressionUUID->"6d88719c-3bba-4202-a926-cc2f905e4379"],
+
+Cell[BoxData["32"], "Output",
+ CellChangeTimes->{{3.7951526569708548`*^9, 3.7951527080484467`*^9}, {
+  3.795152986467884*^9, 3.795153008459117*^9}},
+ CellLabel->"Out[79]=",ExpressionUUID->"27a377a6-a2db-4948-be5f-7df55d1fb1e9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"bigA", "=", 
+  RowBox[{"Mod", "[", 
+   RowBox[{
+    RowBox[{"g", "^", "a"}], ",", "p"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7951527094507113`*^9, 3.795152751177199*^9}, {
+  3.795152788305174*^9, 3.795152813105926*^9}},
+ CellLabel->"In[80]:=",ExpressionUUID->"8cdaea14-534c-4b84-aa84-089ea99f4983"],
+
+Cell[BoxData["16"], "Output",
+ CellChangeTimes->{
+  3.7951528627279873`*^9, {3.7951529865405817`*^9, 3.795153008473528*^9}},
+ CellLabel->"Out[80]=",ExpressionUUID->"5ec601eb-8116-4d76-8e3e-a68de61fd04a"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Meanwhile, Bob computes ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"B", "=", 
+    RowBox[{
+     SuperscriptBox["g", "b"], "mod", " ", "p"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "531ef430-f376-410e-9227-a2c42365622a"],
+ ", and sends ",
+ Cell[BoxData[
+  FormBox["B", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "bd49dc1b-4e38-4813-a8c2-439c1405d857"],
+ " to Alice"
+}], "Text",
+ CellChangeTimes->{{3.795153503824212*^9, 
+  3.795153570268363*^9}},ExpressionUUID->"563de159-69ef-40e3-b20c-\
+01439af0737a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"b", "=", 
+  RowBox[{"RandomInteger", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Prime", "[", "10", "]"}], ",", 
+     RowBox[{"Prime", "[", "100", "]"}]}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.79515287906598*^9, 3.795152889933323*^9}},
+ CellLabel->"In[81]:=",ExpressionUUID->"90ad022e-1f02-45ab-8a93-1f72dd46d555"],
+
+Cell[BoxData["219"], "Output",
+ CellChangeTimes->{
+  3.795152890845213*^9, {3.795152986630548*^9, 3.795153008486697*^9}},
+ CellLabel->"Out[81]=",ExpressionUUID->"8cd0133f-6fad-4345-8c38-a12832c64396"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"bigB", "=", 
+  RowBox[{"Mod", "[", 
+   RowBox[{
+    RowBox[{"g", "^", "b"}], ",", "p"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.795152906246376*^9, 3.795152911492037*^9}},
+ CellLabel->"In[82]:=",ExpressionUUID->"790cecb1-c244-41e8-9474-a7de1188297f"],
+
+Cell[BoxData["10"], "Output",
+ CellChangeTimes->{
+  3.795152912171362*^9, {3.795152986715386*^9, 3.7951530085547256`*^9}},
+ CellLabel->"Out[82]=",ExpressionUUID->"814c1e43-698e-4373-9a40-353ce118597f"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Once Alice received ",
+ Cell[BoxData[
+  FormBox["B", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "f81bfeca-9b59-4fac-804c-578bb7d24081"],
+ ", which is the number sends from Bob, she will compute the shared secret ",
+ Cell[BoxData[
+  FormBox["s", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "df7f4cf2-f867-4c8d-a611-d9836e3da155"],
+ ", where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"s", "=", " ", 
+    RowBox[{
+     SuperscriptBox["B", "a"], "mod", " ", "p"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "beb0e8ee-f32e-41a5-90d9-c7fd560c32b2"]
+}], "Text",
+ CellChangeTimes->{{3.795153704151965*^9, 3.795153761960259*^9}, {
+  3.79515379588197*^9, 
+  3.7951538139286222`*^9}},ExpressionUUID->"c5a45e47-2b3f-4128-8477-\
+142369f969fb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sA", "=", 
+  RowBox[{"Mod", "[", 
+   RowBox[{
+    RowBox[{"bigB", "^", "a"}], ",", "p"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.795152919014324*^9, 3.79515293752897*^9}},
+ CellLabel->"In[83]:=",ExpressionUUID->"b9da5ec1-edde-46de-80af-b9bfa4678704"],
+
+Cell[BoxData["24"], "Output",
+ CellChangeTimes->{
+  3.795152938205369*^9, {3.795152986729611*^9, 3.7951530086194897`*^9}},
+ CellLabel->"Out[83]=",ExpressionUUID->"16c8635e-5839-4f20-8743-e5aabefd830e"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Also, right after Bob received ",
+ Cell[BoxData[
+  FormBox["A", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "6671d57a-e0b0-4b62-a7bf-430c0f388f15"],
+ ", which is the number sends from Alice, he will compute the shared secret \
+",
+ Cell[BoxData[
+  FormBox["s", TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "3f672d22-a485-4cdd-9aca-d3ea737c17f5"],
+ ", where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"s", "=", 
+    RowBox[{
+     SuperscriptBox["A", "b"], "mod", " ", "p"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "8573f00a-f534-4179-b822-c37e3898ca34"]
+}], "Text",
+ CellChangeTimes->{{3.7951537708329563`*^9, 3.795153790174493*^9}, {
+  3.795153829174354*^9, 
+  3.795153884533847*^9}},ExpressionUUID->"0c885ca8-7735-4e70-8c66-\
+12fdead939a5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sB", "=", 
+  RowBox[{"Mod", "[", 
+   RowBox[{
+    RowBox[{"bigA", "^", "b"}], ",", "p"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.795152939202229*^9, 3.795152951075276*^9}},
+ CellLabel->"In[84]:=",ExpressionUUID->"de7b4508-6d4a-4b50-9bd7-17f3cc0a5173"],
+
+Cell[BoxData["24"], "Output",
+ CellChangeTimes->{
+  3.795152951569742*^9, {3.795152986809875*^9, 3.7951530086320353`*^9}},
+ CellLabel->"Out[84]=",ExpressionUUID->"5b20b4b7-8327-4d3d-b8be-f161004b051e"]
+}, Open  ]],
+
+Cell["\<\
+As we can see, the shared secret computed by Alice is sA, which equals to the \
+shared secret computed by Bob, the sB, Alice and Bob now may use s=sA=sB as a \
+shared secret for symmetric encrypted communication.\
+\>", "Text",
+ CellChangeTimes->{{3.795153891151011*^9, 
+  3.795153981931971*^9}},ExpressionUUID->"700a5820-3b6c-4dff-9aba-\
+5b2a70228b6b"]
+}, Open  ]]
+},
+WindowSize->{808, 709},
+WindowMargins->{{Automatic, 60}, {Automatic, 27}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (2019\:5e744\:67088\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 186, 3, 160, "Title",ExpressionUUID->"f918704e-7886-40ab-adf9-8c5cbe9c8663"],
+Cell[769, 27, 825, 23, 58, "Text",ExpressionUUID->"0b794eb9-cc85-416d-a251-2b8fca5dcd77"],
+Cell[CellGroupData[{
+Cell[1619, 54, 278, 5, 44, "Input",ExpressionUUID->"9cdb8e03-a4a9-4207-bb69-22d28cbf9d9c"],
+Cell[1900, 61, 227, 4, 34, "Output",ExpressionUUID->"1abc7d7a-a6cb-4565-8e88-8e9e4caa2eaa"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2164, 70, 293, 6, 44, "Input",ExpressionUUID->"532623b2-ac7d-4a80-92f1-84bd3cf8cb3f"],
+Cell[2460, 78, 222, 3, 34, "Output",ExpressionUUID->"abdf6914-391c-4af7-a28a-6bdc6f56e75e"]
+}, Open  ]],
+Cell[2697, 84, 804, 24, 35, "Text",ExpressionUUID->"e3c8c3ac-56f0-4c5d-860b-566d516c6792"],
+Cell[3504, 110, 213, 3, 44, "Input",ExpressionUUID->"02d3e981-0ea8-4af1-87c6-067b768e7d07"],
+Cell[CellGroupData[{
+Cell[3742, 117, 356, 8, 44, "Input",ExpressionUUID->"6d88719c-3bba-4202-a926-cc2f905e4379"],
+Cell[4101, 127, 227, 3, 34, "Output",ExpressionUUID->"27a377a6-a2db-4948-be5f-7df55d1fb1e9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4365, 135, 327, 7, 44, "Input",ExpressionUUID->"8cdaea14-534c-4b84-aa84-089ea99f4983"],
+Cell[4695, 144, 203, 3, 34, "Output",ExpressionUUID->"5ec601eb-8116-4d76-8e3e-a68de61fd04a"]
+}, Open  ]],
+Cell[4913, 150, 577, 18, 35, "Text",ExpressionUUID->"563de159-69ef-40e3-b20c-01439af0737a"],
+Cell[CellGroupData[{
+Cell[5515, 172, 355, 8, 44, "Input",ExpressionUUID->"90ad022e-1f02-45ab-8a93-1f72dd46d555"],
+Cell[5873, 182, 200, 3, 34, "Output",ExpressionUUID->"8cd0133f-6fad-4345-8c38-a12832c64396"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6110, 190, 276, 6, 44, "Input",ExpressionUUID->"790cecb1-c244-41e8-9474-a7de1188297f"],
+Cell[6389, 198, 201, 3, 34, "Output",ExpressionUUID->"814c1e43-698e-4373-9a40-353ce118597f"]
+}, Open  ]],
+Cell[6605, 204, 829, 23, 54, "Text",ExpressionUUID->"c5a45e47-2b3f-4128-8477-142369f969fb"],
+Cell[CellGroupData[{
+Cell[7459, 231, 276, 6, 44, "Input",ExpressionUUID->"b9da5ec1-edde-46de-80af-b9bfa4678704"],
+Cell[7738, 239, 201, 3, 34, "Output",ExpressionUUID->"16c8635e-5839-4f20-8743-e5aabefd830e"]
+}, Open  ]],
+Cell[7954, 245, 839, 24, 58, "Text",ExpressionUUID->"0c885ca8-7735-4e70-8c66-12fdead939a5"],
+Cell[CellGroupData[{
+Cell[8818, 273, 277, 6, 44, "Input",ExpressionUUID->"de7b4508-6d4a-4b50-9bd7-17f3cc0a5173"],
+Cell[9098, 281, 201, 3, 34, "Output",ExpressionUUID->"5b20b4b7-8327-4d3d-b8be-f161004b051e"]
+}, Open  ]],
+Cell[9314, 287, 362, 7, 58, "Text",ExpressionUUID->"700a5820-3b6c-4dff-9aba-5b2a70228b6b"]
+}, Open  ]]
+}
+]
+*)
+
